@@ -7,10 +7,9 @@
 </head>
 <body>
 
-  <header>
-    
+  <header id="inicio">
     <img src="img/Logo.png" alt="Logo del proyecto" width="150">
-    <h1>Dashboard de nómina</h1>   Remove-Item -Recurse -Force .git
+    <h1>Dashboard de nómina</h1>
     <p>Acta de constitución del proyecto y levantamiento de información para <strong>NETTPLUS</strong></p>
 
     <nav>
@@ -32,7 +31,7 @@
   <hr>
   <main>
 
-    <section id="datos-genreales">
+    <section id="datos-generales">
       <h2>1. Datos generales del proyecto</h2>
       <ul>
         <li><strong>Empresa:</strong> NETTPLUS</li>
@@ -40,7 +39,7 @@
         <li><strong>Patrocinador:</strong> <mark>Por confirmar</mark> (responsable del proyecto en NETTPLUS)</li>
         <li><strong>Gerente de proyecto:</strong> <mark>Por designar</mark></li>
         <li><strong>Equipo de desarrollo:</strong> Carlos Correa, Emilio Cueva y Jorge Díaz</li>
-        <li><strong>Estado del proyecto:</strong> Borrador (<time datetime="2026-10-20">20 de octubre de 2026</time>)</li>
+        <li><strong>Estado del proyecto:</strong> Borrador (<time datetime="2026-10-21">21 de octubre de 2026</time>)</li>
       </ul>
     </section>
 
@@ -50,47 +49,33 @@
       <article>
         <h3>2.1 Propósito del documento</h3>
         <p>
-          Este documento formaliza el inicio del proyecto Dashboard de nómina para NETTPLUS y sirve como
-          referencia común para quienes participan en su planificación y desarrollo. Explica qué necesita el cliente,
-          qué se quiere lograr y hasta dónde llega el proyecto por ahora.
-        </p>
-        <p>
-          Es una primera versión. Parte de la información que entregó el cliente en el reto, y varios puntos se van a
-          ajustar cuando NETTPLUS los confirme.
+          Este documento formaliza el inicio del proyecto y sirve como referencia común para quienes participan en su
+          planificación y desarrollo. Es una primera versión, basada en la información que entregó el cliente en el reto;
+          varios puntos se ajustarán cuando NETTPLUS los confirme.
         </p>
       </article>
 
       <article>
         <h3>2.2 Justificación del proyecto</h3>
         <p>
-          NETTPLUS registra la asistencia de sus colaboradores en el software Z-biotime, que entrega sus reportes en una
-          base de datos en Excel. Con esos datos, el Asistente de Recursos Humanos
-          hace cada día una revisión del comportamiento de cada colaborador, sobre todo de su puntualidad. Es un trabajo
-          repetitivo que le quita tiempo todos los días. Además, el reporte mensual que se necesita para pagar la nómina
-          todavía no se genera de forma automática.
-        </p>
-        <p>
-          El propósito es desarrollar un dashboard de nómina que tome los datos de Z-biotime, calcule los indicadores de
-          puntualidad y los muestre en un resumen diario por colaborador. También debe guardar un historial de esos
-          indicadores y generar el reporte mensual para el pago de nómina. El proyecto no cambia la forma en que se
-          registra la asistencia en Z-biotime.
+          NETTPLUS registra la asistencia de sus colaboradores en el software Z-biotime (ZKTeco), que entrega sus reportes en
+          Excel. Con esos datos, el Asistente de Recursos Humanos revisa cada día el comportamiento de cada colaborador,
+          sobre todo su puntualidad. Es un trabajo repetitivo que le quita tiempo, y el reporte mensual para pagar la
+          nómina todavía no se genera de forma automática.
         </p>
       </article>
 
       <article>
         <h3>2.3 Breve descripción</h3>
         <p>
-          Aplicación web, tipo dashboard, para el área de Recursos Humanos de NETTPLUS. Recibirá los datos de asistencia
-          de Z-biotime de una de estas dos formas:
+          Aplicación web, tipo dashboard, para el área de Recursos Humanos de NETTPLUS. Tomará los datos de asistencia de
+          Z-biotime, calculará los indicadores de puntualidad y los mostrará en un resumen diario por colaborador. También
+          guardará un historial y generará el reporte mensual para la nómina. No cambia la forma en que se registra la
+          asistencia en Z-biotime.
         </p>
-        <ul>
-          <li>Conexión directa con el sistema.</li>
-          <li>Carga del archivo Excel que Z-biotime exporta.</li>
-        </ul>
         <p>
-          Cuál se use se decidirá cuando se confirme con quien administra Z-biotime qué opciones permite su versión.
-          Todavía no está definidocuáles son los indicadores clave ni si el sistema debe calcular valores
-          en dinero o solo entregar la información de asistencia para que otra persona calcule los pagos.
+          Los datos llegarán por conexión directa o por carga del Excel exportado, según lo que permita la versión de
+          Z-biotime (ver <a href="#pendientes">pendientes por confirmar</a>).
         </p>
       </article>
     </section>
@@ -98,40 +83,33 @@
     <section id="alcance">
       <h2>3. Alcance preliminar</h2>
       <p>
-        De manera preliminar, el proyecto comprende entender el proceso actual, diseñar y construir la solución,
-        probarla y ponerla en uso. Se concreta en los siguientes componentes:
+        El proyecto comprende entender el proceso actual, diseñar y construir la solución, probarla y ponerla en uso.
+        Los detalles de cada función están en los <a href="#requisitos">requisitos</a>.
       </p>
-      <ul></ul>
-        <li>Análisis y definición del proceso</li>
-        <dd>Revisar cómo se hace hoy la revisión diaria y cómo se arma el reporte mensual, y acordar con NETTPLUS los indicadores y las reglas de puntualidad.</dd>
+      <dl>
+        <dt>Análisis y definición del proceso</dt>
+        <dd>Revisar cómo se hace hoy la revisión diaria y el reporte mensual, y acordar indicadores y reglas con NETTPLUS.</dd>
 
-        <li>Obtención de datos</li>
-        <dd>Conectar la aplicación con Z-biotime o cargar el Excel que exporta, según lo que se confirme como viable.</dd>
+        <dt>Obtención de datos</dt>
+        <dd>Conexión con Z-biotime o carga del Excel, según lo que resulte viable.</dd>
 
-        <li>Resumen diario e indicadores</li>
-        <dd>Cálculo de los indicadores por colaborador y un resumen diario con sus registros y su puntualidad.</dd>
+        <dt>Resumen, historial y reporte</dt>
+        <dd>Indicadores diarios por colaborador, historial consultable y reporte mensual para nómina.</dd>
 
-        <li>Historial</li>
-        <dd>Almacenamiento de los indicadores para consultarlos por colaborador y por fechas.</dd>
+        <dt>Acceso de usuarios</dt>
+        <dd>Ingreso con perfiles según quién use el sistema.</dd>
 
-        <li>Reporte mensual</li>
-        <dd>Generación automática del reporte para el pago de nómina, en el formato que se acuerde.</dd>
-
-        <li>Acceso de usuarios</li>
-        <dd>Ingreso al sistema con perfiles según quién lo use, que se definirán con el cliente.</dd>
-
-        <li>Pruebas y puesta en marcha</li>
-        <dd>Pruebas con datos de Z-biotime, capacitación a los usuarios y acompañamiento al inicio.</dd>
-      </ul>
+        <dt>Pruebas y puesta en marcha</dt>
+        <dd>Pruebas con datos de Z-biotime, capacitación y acompañamiento al inicio.</dd>
+      </dl>
     </section>
 
     <section id="beneficios">
       <h2>4. Resultados esperados y beneficios</h2>
       <ul>
-        <li><strong>Menos carga operativa:</strong> el Asistente de Recursos Humanos ya no tendría que revisar cada día los registros uno por uno.</li>
-        <li><strong>Información diaria:</strong> el resumen de cada colaborador y de su puntualidad estaría disponible sin esperar a que alguien lo prepare.</li>
-        <li><strong>Reporte mensual automático:</strong> se generaría con los mismos datos del dashboard, sin armarlo a mano.</li>
-        <li><strong>Historial:</strong> los indicadores quedarían guardados para consultarlos y compararlos más adelante.</li>
+        <li><strong>Menos carga operativa:</strong> el Asistente de Recursos Humanos ya no revisaría los registros uno por uno cada día. La meta en horas ahorradas se acordará con el cliente.</li>
+        <li><strong>Información disponible:</strong> el resumen diario y el reporte mensual saldrían de los mismos datos, sin armarlos a mano.</li>
+        <li><strong>Historial:</strong> los indicadores quedarían guardados para consultarlos y compararlos después.</li>
       </ul>
     </section>
 
@@ -140,36 +118,30 @@
 
       <article>
         <h3>R1. Obtener los registros de asistencia</h3>
-        <p>Obtener los registros de asistencia de Z-biotime, por conexión directa o por carga del Excel exportado.</p>
-        <p><strong>Criterio de éxito:</strong> los registros llegan al dashboard sin copiarlos a mano y coinciden con los que tiene Z-biotime.</p>
+        <p>Obtener los registros de Z-biotime, por conexión directa o por carga del Excel exportado.</p>
+        <p><strong>Criterio de éxito:</strong> los registros llegan al dashboard sin copiarlos a mano y coinciden con los de Z-biotime.</p>
       </article>
 
       <article>
         <h3>R2. Mostrar un resumen diario</h3>
-        <p>Mostrar un resumen diario de los registros de cada colaborador y de su puntualidad.</p>
+        <p>Mostrar un resumen diario de los registros y la puntualidad de cada colaborador.</p>
         <p><strong>Criterio de éxito:</strong> Recursos Humanos ve cada día el resumen por colaborador y puede identificar quién llegó tarde, según las reglas acordadas con NETTPLUS.</p>
       </article>
 
       <article>
         <h3>R3. Guardar un historial</h3>
         <p>Guardar un historial de los indicadores de nómina.</p>
-        <p><strong>Criterio de éxito:</strong> se pueden consultar los indicadores de días y meses anteriores, por colaborador y por rango de fechas.</p>
+        <p><strong>Criterio de éxito:</strong> se consultan indicadores de días y meses anteriores, por colaborador y por rango de fechas.</p>
       </article>
 
       <article>
         <h3>R4. Generar el reporte mensual</h3>
-        <p>Generar el reporte mensual para el pago de nómina de forma automática.</p>
-        <p><strong>Criterio de éxito:</strong> el reporte del mes se genera sin armarlo a mano, en el formato acordado, y Recursos Humanos lo revisa y lo acepta.</p>
+        <p>Generar de forma automática el reporte mensual para el pago de nómina.</p>
+        <p><strong>Criterio de éxito:</strong> el reporte se genera en el formato acordado y Recursos Humanos lo revisa y lo acepta.</p>
       </article>
 
       <article>
-        <h3>R5. Quitar la revisión diaria manual</h3>
-        <p>Quitar la revisión diaria manual que hoy hace el Asistente de Recursos Humanos.</p>
-        <p><strong>Criterio de éxito:</strong> el asistente ya no hace esa revisión a mano. La meta en horas ahorradas se acordará con el cliente.</p>
-      </article>
-
-      <article>
-        <h3>R6. Acceso según el rol</h3>
+        <h3>R5. Acceso según el rol</h3>
         <p>Dar acceso al dashboard según el rol de cada usuario.</p>
         <p><strong>Criterio de éxito:</strong> cada usuario ve solo la información que le corresponde. Los roles se definen con el cliente.</p>
       </article>
@@ -178,7 +150,7 @@
     <section id="hitos">
       <h2>6. Hitos</h2>
       <ol>
-        <li>Levantamiento y validación del proceso actual, los indicadores, las reglas de puntualidad, el formato del reporte mensual y la forma de obtener los datos de Z-biotime.</li>
+        <li>Levantamiento y validación del proceso actual y de los puntos pendientes.</li>
         <li>Aprobación de los requisitos y del prototipo del dashboard.</li>
         <li>Desarrollo de la carga o conexión de datos y de los cálculos, con pruebas funcionales.</li>
         <li>Prueba con los datos de un mes completo, comparando el resultado con el reporte que se usa hoy.</li>
@@ -192,13 +164,13 @@
 
     <section id="riesgos">
       <h2>7. Riesgos</h2>
-      <p>Los riesgos se irán actualizando conforme avance el proyecto. De manera preliminar se identifican:</p>
+      <p>Los riesgos se actualizarán conforme avance el proyecto. De manera preliminar:</p>
       <ul>
-        <li>Z-biotime podría no permitir la conexión directa, por la versión, la licencia o el acceso al servidor. Hay que confirmarlo con quien lo administra y, si no se puede, usar la carga del Excel.</li>
-        <li>El formato del Excel que exporta Z-biotime puede cambiar según el reporte o la versión y dañar la carga de datos. Hay que acordar un formato y validar las columnas al cargar el archivo.</li>
+        <li>Z-biotime podría no permitir la conexión directa (versión, licencia o acceso al servidor). Si no se puede, se usa la carga del Excel.</li>
+        <li>El formato del Excel puede cambiar según el reporte o la versión y dañar la carga. Hay que acordar un formato y validar las columnas al cargar.</li>
         <li>Las reglas de puntualidad (tolerancia, horarios, turnos, permisos) no están definidas y pueden cambiar los cálculos. Hay que documentarlas y validarlas con Recursos Humanos.</li>
-        <li>Los datos de origen pueden tener marcaciones faltantes o repetidas. Hay que definir cómo se muestran y cuál se considera el dato oficial.</li>
-        <li>Los datos de asistencia y de pago son de las personas. Hay que definir quién puede verlos y dónde se guardan.</li>
+        <li>Los datos de origen pueden tener marcaciones faltantes o repetidas. Hay que definir cómo se muestran y cuál es el dato oficial.</li>
+        <li>Los datos de asistencia y pago son personales. Hay que definir quién puede verlos y dónde se guardan.</li>
         <li>Si NETTPLUS tarda en entregar el Excel de ejemplo, las reglas y los accesos, el desarrollo se retrasa.</li>
       </ul>
     </section>
@@ -209,20 +181,19 @@
       <article>
         <h3>8.1 Supuestos</h3>
         <ul>
-          <li>NETTPLUS entregará un Excel de ejemplo exportado de Z-biotime (con los datos personales ocultos si lo prefiere), el último reporte mensual que usa para el pago de nómina y las reglas de horarios y puntualidad.</li>
-          <li>NETTPLUS facilitará el contacto de quien administra Z-biotime y de las personas que van a usar el dashboard, para validar los requisitos.</li>
-          <li>Z-biotime seguirá siendo el sistema donde se registran las marcaciones.</li>
-          <li>Se plantea una aplicación web porque el cliente pidió un dashboard. En el reto se menciona «software, app, robot o IA» sin precisar cuál; por ahora se parte de una aplicación con procesos automáticos y, si el cliente espera algo de inteligencia artificial, se definirá qué debe hacer.</li>
-          <li>Por el nombre, Z-biotime sería <cite>ZKBio Time</cite> de ZKTeco, algo que <mark>hay que confirmar</mark>.</li>
+          <li>NETTPLUS entregará un Excel de ejemplo exportado de Z-biotime (con datos personales ocultos si lo prefiere), el último reporte mensual de nómina y las reglas de horarios y puntualidad.</li>
+          <li>NETTPLUS facilitará el contacto de quien administra Z-biotime y de los futuros usuarios, para validar los requisitos.</li>
+          <li>Z-biotime seguirá siendo el sistema donde se registran las marcaciones. Por el nombre, sería <cite>ZKBio Time</cite> de ZKTeco, <mark>algo que hay que confirmar</mark>.</li>
+          <li>Se plantea una aplicación web porque el cliente pidió un dashboard. El reto menciona «software, app, robot o IA» sin precisar cuál; si el cliente espera inteligencia artificial, se definirá qué debe hacer.</li>
         </ul>
       </article>
 
       <article>
         <h3>8.2 Restricciones</h3>
         <ul>
-          <li>El proyecto lee y muestra los datos que entrega Z-biotime. No modifica los registros originales.</li>
-          <li>Quedan fuera del alcance inicial reemplazar Z-biotime, manejar los relojes biométricos y otros procesos de recursos humanos como selección de personal, vacaciones o evaluaciones.</li>
-          <li>El cálculo de pagos (sueldos, descuentos, horas extra en dinero) no se considera incluido hasta que el cliente confirme si lo espera. Por ahora, el reporte mensual entrega la información de asistencia que se necesita para pagar.</li>
+          <li>El proyecto lee y muestra los datos de Z-biotime; no modifica los registros originales.</li>
+          <li>Quedan fuera del alcance inicial reemplazar Z-biotime, manejar los relojes biométricos y otros procesos de recursos humanos (selección, vacaciones, evaluaciones).</li>
+          <li>El cálculo de pagos (sueldos, descuentos, horas extra en dinero) no se incluye hasta que el cliente confirme si lo espera. Por ahora, el reporte mensual entrega la información de asistencia necesaria para pagar.</li>
           <li>El proyecto debe terminarse dentro del período de la asignatura.</li>
           <li>Dónde se aloja la aplicación, quién paga ese servicio y si los datos pueden estar fuera de la empresa están por definir.</li>
         </ul>
@@ -232,37 +203,40 @@
     <section id="costos">
       <h2>9. Costos preliminares</h2>
       <p>
-        Todavía no hay una estimación de costos. Por tratarse de un proyecto de la asignatura, se asume que el
-        desarrollo no tiene costo para NETTPLUS. Los costos recurrentes, como el servidor o,
-        el dominio y las licencias, dependen de dónde se aloje la aplicación y de lo que NETTPLUS ya tenga contratado.
-        Se definirán en la planificación, junto con el presupuesto que el cliente pueda destinar.
+        Todavía no hay una estimación. Por ser un proyecto de la asignatura, se asume que el desarrollo no tiene costo
+        para NETTPLUS. Los costos recurrentes (servidor, dominio y licencias) dependen de dónde se aloje la aplicación y
+        de lo que NETTPLUS ya tenga contratado; se definirán en la planificación, junto con el presupuesto que el cliente
+        pueda destinar.
       </p>
     </section>
 
     <section id="interesados">
       <h2>10. Interesados principales</h2>
-      <ul>
-        <li>Responsable del proyecto en NETTPLUS (patrocinador, nombre por confirmar)</li>
+      <dl>
+        <dt>Responsable del proyecto en NETTPLUS (patrocinador, nombre por confirmar)</dt>
         <dd>Autoriza el proyecto, aprueba lo que se entrega y define las prioridades.</dd>
 
-        <li>Asistente de Recursos Humanos</li>
-        <dd>Hoy hace la revisión diaria. Será el usuario principal y valida los resúmenes y los indicadores.</dd>
+        <dt>Asistente de Recursos Humanos</dt>
+        <dd>Hoy hace la revisión diaria. Será el usuario principal y valida los resúmenes e indicadores.</dd>
 
-        <li>Jefatura de Recursos Humanos o gerencia (por confirmar)</li>
+        <dt>Jefatura de Recursos Humanos o gerencia (por confirmar)</dt>
         <dd>Consulta los indicadores y recibe el reporte mensual.</dd>
 
-        <li>Contabilidad o quien paga la nómina (por confirmar)</li>
+        <dt>Contabilidad o quien paga la nómina (por confirmar)</dt>
         <dd>Usa el reporte mensual para el pago.</dd>
 
-        <li>Administrador de Z-biotime (TI o proveedor, por confirmar)</li>
+        <dt>Desarrollo Organizacional</dt>
+        <dd>Usuario del sistema, según lo indicado en la reunión con el cliente.</dd>
+
+        <dt>Administrador de Z-biotime (TI o proveedor, por confirmar)</dt>
         <dd>Confirma qué formas de obtener los datos permite el sistema y da los accesos.</dd>
 
-        <li>Colaboradores de NETTPLUS</li>
-        <dd>Marcan su asistencia en Z-biotime. Sus datos aparecen en el dashboard.</dd>
+        <dt>Colaboradores de NETTPLUS</dt>
+        <dd>Marcan su asistencia en Z-biotime; sus datos aparecen en el dashboard.</dd>
 
-        <li>Equipo de desarrollo: Carlos Correa, Emilio Cueva y Jorge Díaz</li>
+        <dt>Equipo de desarrollo: Carlos Correa, Emilio Cueva y Jorge Díaz</dt>
         <dd>Levantan los requisitos, diseñan, desarrollan, prueban y entregan.</dd>
-      </ul>
+      </dl>
     </section>
 
     <section id="levantamiento">
@@ -273,10 +247,10 @@
         <h3>11.1 Situación actual</h3>
         <ul>
           <li>Hay una persona encargada de los atrasos, dentro del área de talento humano.</li>
-          <li>La plataforma registra las marcaciones, pero <strong>no entrega los resúmenes</strong> que se necesitan: conteo de horas, cantidad de ausentismos, aprobaciones, personas atrasadas y permisos o vacaciones.</li>
-          <li>La revisión se hace a diario y el proceso de pago se hace una vez al mes con los datos recolectados, gestionado por talento humano.</li>
+          <li>La plataforma registra las marcaciones, pero <strong>no entrega los resúmenes</strong> que se necesitan: conteo de horas, ausentismos, aprobaciones, personas atrasadas y permisos o vacaciones.</li>
+          <li>La revisión se hace a diario y el pago una vez al mes, gestionado por talento humano.</li>
           <li>La nómina se digita; falta preguntar el formato que usan.</li>
-          <li>Por ahora <strong>no hay API</strong> ni carga constante diaria de datos.</li>
+          <li>Por ahora <strong>no hay API</strong> ni carga diaria constante de datos.</li>
           <li>Se menciona la base «Robor App» y la necesidad de información en la plataforma sobre atrasos.</li>
         </ul>
       </article>
@@ -293,25 +267,25 @@
 
       <article>
         <h3>11.3 Reportes que se usan hoy (todos en Excel)</h3>
-        <ul>
-          <li>Reporte de un empleado</li>
+        <dl>
+          <dt>Reporte de un empleado</dt>
           <dd>Fecha, hora, marcación y por dónde se marcó.</dd>
 
-          <li>Reporte general de colaboradores</li>
+          <dt>Reporte general de colaboradores</dt>
           <dd>Horas de entrada y salida (no incluye almuerzo).</dd>
 
-          <li>Reporte de permisos</li>
-          <dd>ID, nombre, apellido, estado, departamento y el motivo del permiso. Se extrae en un Excel separado del general.</dd>
+          <dt>Reporte de permisos</dt>
+          <dd>ID, nombre, apellido, estado, departamento y motivo. Se extrae en un Excel separado del general.</dd>
 
-          <li>Horas extra</li>
+          <dt>Horas extra</dt>
           <dd>Flujo similar: se marcan con un motivo y pueden ser aprobadas o desaprobadas.</dd>
-        </ul>
+        </dl>
       </article>
 
       <article>
         <h3>11.4 Proceso actual de descarga</h3>
         <ol>
-          <li>Ingresar a la aplicación web de <cite>ZKTeco</cite>.</li>
+          <li>Ingresar a la aplicación web de ZKTeco.</li>
           <li>Ir a asistencia y luego a reportes de marcaciones.</li>
           <li>Seleccionar a todos los colaboradores de la empresa.</li>
           <li>Elegir las fechas del reporte (la fecha de corte es del 20 al 21).</li>
@@ -328,22 +302,22 @@
       </article>
 
       <article>
-        <h3>11.6 Usuarios y accesos</h3>
+        <h3>11.6 Accesos e indicadores</h3>
         <ul>
-          <li>Usarán el sistema: Recursos Humanos, Nómina y Desarrollo Organizacional.</li>
           <li>Recursos Humanos y Contabilidad recibirían solo indicadores, no el dashboard completo.</li>
           <li>Cada persona tiene sus accesos y puede revisar su información.</li>
-          <li>Indicador de rotación de personal: índice general de la empresa y por área.</li>
+          <li>Se pidió un indicador de rotación de personal: índice general de la empresa y por área.</li>
         </ul>
       </article>
 
-      <article>
+      <article id="pendientes">
         <h3>Pendientes por confirmar con el cliente</h3>
         <ul>
           <li>Formato del reporte de nómina.</li>
           <li>Colores corporativos (el cliente los hará llegar).</li>
           <li>Si habrá conexión por API o solo carga del Excel.</li>
           <li>Indicadores clave y reglas de puntualidad.</li>
+          <li>Si el sistema debe calcular valores en dinero o solo entregar la información de asistencia.</li>
         </ul>
       </article>
     </section>
@@ -355,7 +329,7 @@
   <footer>
     <p>Proyecto Dashboard de nómina – NETTPLUS</p>
     <p>Equipo de desarrollo: Carlos Correa, Emilio Cueva y Jorge Díaz.</p>
-    <p>Documento en borrador. Última revisión:21 de octubre de 2026.</p>
+    <p>Documento en borrador. Última revisión: 21 de octubre de 2026.</p>
     <p><a href="#inicio">Volver arriba</a></p>
   </footer>
 
