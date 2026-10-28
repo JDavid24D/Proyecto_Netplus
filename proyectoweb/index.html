@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard de nómina – NETTPLUS</title>
+  <style>
+    body { font-family: Georgia, serif; max-width: 1000px; margin: 0 auto; padding: 1rem; line-height: 1.6; }
+    nav ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; list-style: none; }
+    dt { font-weight: bold; margin-top: 1rem; }
+    dd { margin-left: 1.5rem; margin-bottom: .4rem; }
+    section { margin-bottom: 2rem; }
+  </style>
 </head>
 <body>
 
@@ -25,10 +32,13 @@
         <li><a href="#costos">Costos</a></li>
         <li><a href="#interesados">Interesados</a></li>
         <li><a href="#levantamiento">Levantamiento de información</a></li>
+        <li><a href="#tecnologias">Tecnologías</a></li>
+        <li><a href="#tecnologia-futura">API de ZKTeco</a></li>
       </ul>
     </nav>
   </header>
   <hr>
+
   <main>
 
     <section id="datos-generales">
@@ -322,48 +332,118 @@
       </article>
     </section>
 
-  </main>
+    <section id="tecnologias">
+      <h2>12. Tecnologías que vamos a usar</h2>
 
-  <hr>
+      <article id="lenguaje-framework">
+        <h3>12.1 Lenguaje y framework</h3>
+        <dl>
+          <dt>Python</dt>
+          <dd><strong>Qué es:</strong> lenguaje de programación. Se lee fácil y tiene muchas librerías para trabajar con datos y archivos.</dd>
+          <dd><strong>Para qué la usamos:</strong> es el lenguaje de todo el sistema por dentro: leer los Excel, calcular horas trabajadas, atrasos y ausentismos, y armar los reportes (RF11 a RF18).</dd>
+
+          <dt>Django</dt>
+          <dd><strong>Qué es:</strong> framework web de Python. Ya trae inicio de sesión, usuarios y permisos, formularios, plantillas y un panel de administración.</dd>
+          <dd><strong>Para qué la usamos:</strong> usuarios y roles (RF01 a RF03). Los permisos se revisan en el servidor (RNF03) y las contraseñas se guardan con hash y sal (RNF01). También sirve para que parámetros como la tolerancia de atrasos y el día de corte se cambien sin tocar el código (RF13). La bitácora de auditoría (RNF05) la hacemos como un modelo propio.</dd>
+        </dl>
+      </article>
+
+      <article id="base-de-datos">
+        <h3>12.2 Base de datos</h3>
+        <dl>
+          <dt>PostgreSQL</dt>
+          <dd><strong>Qué es:</strong> sistema de bases de datos relacional, gratuito y de código abierto. Django trabaja con él directamente.</dd>
+          <dd><strong>Para qué la usamos:</strong> guarda colaboradores, marcaciones originales, horarios, permisos, horas extra, usuarios, bitácora e historial de cargas. Sus restricciones de unicidad evitan marcaciones duplicadas (RF07) y las marcaciones se guardan tal como llegan (RNF18). Los respaldos diarios se hacen con sus propias herramientas (RNF17).</dd>
+        </dl>
+      </article>
+
+      <article id="procesamiento-excel">
+        <h3>12.3 Procesamiento de Excel</h3>
+        <dl>
+          <dt>openpyxl</dt>
+          <dd><strong>Qué es:</strong> librería de Python para leer y escribir archivos .xlsx.</dd>
+          <dd><strong>Para qué la usamos:</strong> leer los archivos de ZKTeco identificando las columnas por su nombre y no por su posición (RNF14), y generar los reportes en Excel (RF24).</dd>
+
+          <dt>pandas</dt>
+          <dd><strong>Qué es:</strong> librería de Python para trabajar con tablas de datos.</dd>
+          <dd><strong>Para qué la usamos:</strong> ordenar y sumar las marcaciones por colaborador y por día, y calcular los totales de los reportes. Ayuda a procesar un archivo de unas 60 000 marcaciones en menos de 2 minutos (RNF12).</dd>
+        </dl>
+      </article>
+
+      <article id="interfaz-web">
+        <h3>12.4 Interfaz web</h3>
+        <dl>
+          <dt>HTML, CSS y JavaScript</dt>
+          <dd><strong>Qué es:</strong> los tres lenguajes base de cualquier página web: estructura, estilo y comportamiento.</dd>
+          <dd><strong>Para qué la usamos:</strong> las pantallas del sistema, armadas con las plantillas de Django.</dd>
+
+          <dt>Bootstrap</dt>
+          <dd><strong>Qué es:</strong> librería de estilos para páginas que se adaptan al tamaño de la pantalla.</dd>
+          <dd><strong>Para qué la usamos:</strong> que la aplicación se vea bien desde 1366 × 768 y en tablet (RNF13), con tablas y formularios ordenados. También para aplicar los colores corporativos de NETTPLUS cuando los entregue (RNF08).</dd>
+
+          <dt>Chart.js</dt>
+          <dd><strong>Qué es:</strong> librería de JavaScript para hacer gráficos.</dd>
+          <dd><strong>Para qué la usamos:</strong> los gráficos del dashboard (horas, atrasos, ausentismos). Cada gráfico va con su tabla de datos para no depender solo del color (RNF10).</dd>
+
+          <dt>FullCalendar</dt>
+          <dd><strong>Qué es:</strong> librería de JavaScript para mostrar calendarios.</dd>
+          <dd><strong>Para qué la usamos:</strong> el calendario de turnos fijos y rotativos de cada colaborador (RF10).</dd>
+
+          <dt>Chrome, Edge y Firefox</dt>
+          <dd><strong>Qué es:</strong> los navegadores con los que se abre la aplicación.</dd>
+          <dd><strong>Para qué la usamos:</strong> probamos en las dos últimas versiones estables de cada uno (RNF13).</dd>
+        </dl>
+      </article>
+
+      <article id="herramientas">
+        <h3>12.5 Herramientas de desarrollo, diseño y pruebas</h3>
+        <dl>
+          <dt>Git y GitHub</dt>
+          <dd><strong>Qué es:</strong> Git es un sistema de control de versiones. GitHub guarda el repositorio en la nube.</dd>
+          <dd><strong>Para qué la usamos:</strong> trabajar los tres sobre el mismo código sin pisarnos y guardar el historial de cambios.</dd>
+
+          <dt>Figma</dt>
+          <dd><strong>Qué es:</strong> herramienta para diseñar pantallas de una aplicación.</dd>
+          <dd><strong>Para qué la usamos:</strong> hacer el prototipo del dashboard para que NETTPLUS lo apruebe antes de programar.</dd>
+
+          <dt>Enterprise Architect</dt>
+          <dd><strong>Qué es:</strong> herramienta para hacer diagramas de modelado como los UML.</dd>
+          <dd><strong>Para qué la usamos:</strong> los diagramas del proyecto, como el diagrama de contexto que pide la plantilla de visión y alcance.</dd>
+
+          <dt>Pruebas de Django</dt>
+          <dd><strong>Qué es:</strong> sistema de pruebas automáticas que viene incluido en Django.</dd>
+          <dd><strong>Para qué la usamos:</strong> comprobar que los cálculos de horas, atrasos y ausentismos dan lo mismo que un cálculo manual en Excel (objetivos OB-02 y OB-04).</dd>
+
+          <dt>Lighthouse</dt>
+          <dd><strong>Qué es:</strong> herramienta de Chrome que revisa accesibilidad y rendimiento de una página.</dd>
+          <dd><strong>Para qué la usamos:</strong> revisar el contraste de los textos y el uso con teclado (RNF09).</dd>
+        </dl>
+      </article>
 
       <article id="seguridad-publicacion">
-        <h3>3.6 Seguridad y publicación <mark>(por definir)</mark></h3>
+        <h3>12.6 Seguridad y publicación <mark>(por definir)</mark></h3>
         <p>
           Estas dependen de dónde se aloje la aplicación, que todavía no sabemos. Lo que sigue es lo que usaríamos en
           principio:
         </p>
-        <table>
-          <caption>Tecnologías de seguridad y publicación</caption>
-          <thead>
-            <tr>
-              <th scope="col">Tecnología</th>
-              <th scope="col">Qué es</th>
-              <th scope="col">Para qué la usamos</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">HTTPS (TLS 1.2 o superior)</th>
-              <td>Conexión cifrada entre el navegador y el servidor.</td>
-              <td>Toda la comunicación del sistema va cifrada (RNF02).</td>
-            </tr>
-            <tr>
-              <th scope="row">Docker</th>
-              <td>Herramienta que empaqueta la aplicación con todo lo que necesita para que funcione igual en cualquier servidor.</td>
-              <td>Instalar la aplicación y la base de datos en el servidor de NETTPLUS o en la nube.</td>
-            </tr>
-            <tr>
-              <th scope="row">Gunicorn y Nginx</th>
-              <td>Gunicorn ejecuta la aplicación Django y Nginx recibe las visitas y las dirige a ella.</td>
-              <td>Publicar la aplicación en un servidor, con la disponibilidad que se acuerde (RNF16).</td>
-            </tr>
-          </tbody>
-        </table>
+        <dl>
+          <dt>HTTPS (TLS 1.2 o superior)</dt>
+          <dd><strong>Qué es:</strong> conexión cifrada entre el navegador y el servidor.</dd>
+          <dd><strong>Para qué la usamos:</strong> toda la comunicación del sistema va cifrada (RNF02).</dd>
+
+          <dt>Docker</dt>
+          <dd><strong>Qué es:</strong> herramienta que empaqueta la aplicación con todo lo que necesita para que funcione igual en cualquier servidor.</dd>
+          <dd><strong>Para qué la usamos:</strong> instalar la aplicación y la base de datos en el servidor de NETTPLUS o en la nube.</dd>
+
+          <dt>Gunicorn y Nginx</dt>
+          <dd><strong>Qué es:</strong> Gunicorn ejecuta la aplicación Django y Nginx recibe las visitas y las dirige a ella.</dd>
+          <dd><strong>Para qué la usamos:</strong> publicar la aplicación en un servidor, con la disponibilidad que se acuerde (RNF16).</dd>
+        </dl>
       </article>
     </section>
 
     <section id="tecnologia-futura">
-      <h2>4. Tecnología para más adelante: API de ZKTeco</h2>
+      <h2>13. Tecnología para más adelante: API de ZKTeco</h2>
       <p>
         Si NETTPLUS habilita la API de ZKTeco, usaríamos la librería <strong>requests</strong> de Python para pedir los
         datos y una tarea programada (por ejemplo <strong>cron</strong>) para hacerlo todos los días. Para probar la
@@ -373,6 +453,8 @@
     </section>
 
   </main>
+
+  <hr>
 
   <footer>
     <p>Proyecto Dashboard de nómina – NETTPLUS</p>
