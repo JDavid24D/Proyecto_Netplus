@@ -326,6 +326,54 @@
 
   <hr>
 
+      <article id="seguridad-publicacion">
+        <h3>3.6 Seguridad y publicación <mark>(por definir)</mark></h3>
+        <p>
+          Estas dependen de dónde se aloje la aplicación, que todavía no sabemos. Lo que sigue es lo que usaríamos en
+          principio:
+        </p>
+        <table>
+          <caption>Tecnologías de seguridad y publicación</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tecnología</th>
+              <th scope="col">Qué es</th>
+              <th scope="col">Para qué la usamos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">HTTPS (TLS 1.2 o superior)</th>
+              <td>Conexión cifrada entre el navegador y el servidor.</td>
+              <td>Toda la comunicación del sistema va cifrada (RNF02).</td>
+            </tr>
+            <tr>
+              <th scope="row">Docker</th>
+              <td>Herramienta que empaqueta la aplicación con todo lo que necesita para que funcione igual en cualquier servidor.</td>
+              <td>Instalar la aplicación y la base de datos en el servidor de NETTPLUS o en la nube.</td>
+            </tr>
+            <tr>
+              <th scope="row">Gunicorn y Nginx</th>
+              <td>Gunicorn ejecuta la aplicación Django y Nginx recibe las visitas y las dirige a ella.</td>
+              <td>Publicar la aplicación en un servidor, con la disponibilidad que se acuerde (RNF16).</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section id="tecnologia-futura">
+      <h2>4. Tecnología para más adelante: API de ZKTeco</h2>
+      <p>
+        Si NETTPLUS habilita la API de ZKTeco, usaríamos la librería <strong>requests</strong> de Python para pedir los
+        datos y una tarea programada (por ejemplo <strong>cron</strong>) para hacerlo todos los días. Para probar la
+        conexión sirve <strong>Postman</strong>. Como la carga de datos está separada del cálculo (RNF15), cambiar de
+        Excel a API no modifica las reglas de cálculo. Esto queda fuera de la primera versión.
+      </p>
+    </section>
+
+  </main>
+
   <footer>
     <p>Proyecto Dashboard de nómina – NETTPLUS</p>
     <p>Equipo de desarrollo: Carlos Correa, Emilio Cueva y Jorge Díaz.</p>
